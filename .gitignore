@@ -1,0 +1,16 @@
+**/bin/
+**/obj/
+.sdk/
+.build/
+dist/
+release/
+Setup/payload.zip
+Setup/payload.sha256
+tools/*.exe
+.wiki-publish/
+.publish/
+*-RESULTS.txt
+*.log
+*.user
+*.suo
+.vs/
