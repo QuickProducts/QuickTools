@@ -1,0 +1,54 @@
+<Window x:Class="QuickTools.WelcomeWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:shell="clr-namespace:System.Windows.Shell;assembly=PresentationFramework"
+ Title="Добро пожаловать в QuickTools" Width="1060" Height="660" MinWidth="320" MinHeight="240" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize" FontFamily="Segoe UI Variable Text" Background="#111922" Foreground="#E9F2F6" FontSize="13">
+ <shell:WindowChrome.WindowChrome><shell:WindowChrome CaptionHeight="0" CornerRadius="18" GlassFrameThickness="0"/></shell:WindowChrome.WindowChrome>
+ <Window.Resources>
+  <Style TargetType="Button"><Setter Property="Background" Value="#263A44"/><Setter Property="Foreground" Value="#D8E7EA"/><Setter Property="Padding" Value="20,12"/><Setter Property="Cursor" Value="Hand"/><Setter Property="Template"><Setter.Value><ControlTemplate TargetType="Button"><Border x:Name="B" Background="{TemplateBinding Background}" CornerRadius="10" Padding="{TemplateBinding Padding}"><ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/></Border><ControlTemplate.Triggers><Trigger Property="IsMouseOver" Value="True"><Setter TargetName="B" Property="Opacity" Value=".78"/></Trigger><Trigger Property="IsEnabled" Value="False"><Setter TargetName="B" Property="Opacity" Value=".4"/></Trigger><Trigger Property="IsKeyboardFocused" Value="True"><Setter TargetName="B" Property="BorderBrush" Value="#E3FFF4"/><Setter TargetName="B" Property="BorderThickness" Value="1"/></Trigger></ControlTemplate.Triggers></ControlTemplate></Setter.Value></Setter></Style>
+  <Style TargetType="CheckBox"><Setter Property="Foreground" Value="#CFE4E9"/><Setter Property="Cursor" Value="Hand"/><Setter Property="FontSize" Value="13"/><Setter Property="Margin" Value="0,0,0,16"/></Style>
+  <Style x:Key="Card" TargetType="Border"><Setter Property="CornerRadius" Value="15"/><Setter Property="Background" Value="#192833"/><Setter Property="BorderBrush" Value="#314550"/><Setter Property="BorderThickness" Value="1"/><Setter Property="Padding" Value="22"/></Style>
+ </Window.Resources>
+ <Border CornerRadius="18" Background="#111922" BorderBrush="#3B535C" BorderThickness="1">
+ <Grid>
+  <Grid.ColumnDefinitions><ColumnDefinition Width="245"/><ColumnDefinition/></Grid.ColumnDefinitions>
+  <Border CornerRadius="17,0,0,17" BorderBrush="#2A404A" BorderThickness="0,0,1,0">
+   <Border.Background><LinearGradientBrush StartPoint="0,0" EndPoint="1,1"><GradientStop Color="#223F42" Offset="0"/><GradientStop Color="#152330" Offset=".64"/><GradientStop Color="#29273F" Offset="1"/></LinearGradientBrush></Border.Background>
+   <DockPanel Margin="25,30,25,26">
+    <StackPanel DockPanel.Dock="Top"><StackPanel Orientation="Horizontal"><Image x:Name="BrandLogo" Width="39" Height="39" RenderOptions.BitmapScalingMode="HighQuality"/><TextBlock Text="QuickTools" FontSize="18" FontWeight="SemiBold" VerticalAlignment="Center" Margin="10,0,0,0"/></StackPanel><TextBlock Text="ПЕРВЫЙ ЗАПУСК" FontSize="9" Foreground="#82A5B0" Margin="0,27,0,30"/></StackPanel>
+    <StackPanel DockPanel.Dock="Bottom"><Border CornerRadius="10" Background="#253C42" Padding="14"><StackPanel><TextBlock Text="Ваши файлы — у вас." Foreground="#B0E6D9" FontSize="12"/><TextBlock Text="Конвертация работает локально.&#x0a;Исходники остаются на месте." FontSize="10" Foreground="#89A9B7" LineHeight="18" Margin="0,7,0,0"/></StackPanel></Border><TextBlock Text="QUICKTOOLS  /  0.4.2" FontSize="9" Foreground="#637F92" Margin="0,20,0,0"/></StackPanel>
+    <StackPanel x:Name="StepList"/>
+   </DockPanel>
+  </Border>
+  <Grid Grid.Column="1" Margin="35,25,35,27">
+   <Grid.RowDefinitions><RowDefinition Height="30"/><RowDefinition Height="112"/><RowDefinition/><RowDefinition Height="68"/></Grid.RowDefinitions>
+   <Grid MouseLeftButtonDown="DragTitle"><TextBlock x:Name="Eyebrow" Text="СДЕЛАЕМ ВСЁ ПО ПОРЯДКУ" Foreground="#7F9FAB" FontSize="9" VerticalAlignment="Center"/><Button Content="×" FontSize="22" Width="30" Height="30" Padding="0" HorizontalAlignment="Right" Background="Transparent" Click="CloseWindow"/></Grid>
+   <StackPanel Grid.Row="1" Margin="0,17,0,0"><TextBlock x:Name="Heading" Text="Меньше кликов. Больше свободы." FontSize="28" FontWeight="SemiBold"/><TextBlock x:Name="Description" Text="Подготовим инструменты и покажем, как ими пользоваться." Foreground="#91AAB8" FontSize="12" Margin="0,10,0,0" TextWrapping="Wrap" LineHeight="20"/></StackPanel>
+   <Grid x:Name="Stage" Grid.Row="2">
+    <StackPanel x:Name="WelcomePanel">
+     <Border Style="{StaticResource Card}" Height="255" Padding="0" ClipToBounds="True">
+      <Image x:Name="WelcomeBanner" Stretch="Uniform" RenderOptions.BitmapScalingMode="HighQuality"/>
+     </Border>
+     <UniformGrid Columns="3" Margin="0,17,0,0"><StackPanel Margin="0,0,10,0"><TextBlock Text="01  Подготовка" Foreground="#B5DDD4"/><TextBlock Text="Выберем компоненты" Foreground="#738F9F" FontSize="10" Margin="0,7,0,0"/></StackPanel><StackPanel Margin="10,0"><TextBlock Text="02  Установка" Foreground="#B5DDD4"/><TextBlock Text="Скачаем и проверим" Foreground="#738F9F" FontSize="10" Margin="0,7,0,0"/></StackPanel><StackPanel Margin="10,0,0,0"><TextBlock Text="03  Знакомство" Foreground="#B5DDD4"/><TextBlock Text="Попробуем прямо здесь" Foreground="#738F9F" FontSize="10" Margin="0,7,0,0"/></StackPanel></UniformGrid>
+    </StackPanel>
+    <StackPanel x:Name="ComponentsPanel" Visibility="Collapsed">
+     <Border Style="{StaticResource Card}"><StackPanel><CheckBox x:Name="MediaToggle" IsChecked="True" Content="Видео, аудио и изображения"/><TextBlock Text="FFmpeg + ImageMagick · MP4, MP3, WAV, PNG, AVIF и другие" Foreground="#819DAC" FontSize="10" Margin="20,-8,0,21"/><CheckBox x:Name="DocumentsToggle" IsChecked="True" Content="Документы и электронные книги"/><TextBlock Text="Pandoc · DOCX, Markdown, HTML, EPUB, RTF" Foreground="#819DAC" FontSize="10" Margin="20,-8,0,21"/><CheckBox x:Name="PdfCreateToggle" IsChecked="True" Content="Создание PDF из документов"/><TextBlock Text="Typst + Pandoc · без LibreOffice и офисного пакета" Foreground="#819DAC" FontSize="10" Margin="20,-8,0,21"/><CheckBox x:Name="PdfReadToggle" IsChecked="True" Content="PDF → текст и изображения" Margin="0"/><TextBlock Text="Poppler · извлечение текста, PNG и JPG первой страницы" Foreground="#819DAC" FontSize="10" Margin="20,8,0,0"/></StackPanel></Border>
+     <TextBlock Text="TXT → BAT/CMD/PS1, ZIP, TAR и SHA-256 работают без скачивания. Уже установленные программы будут использованы повторно." TextWrapping="Wrap" Foreground="#7894A4" FontSize="11" LineHeight="19" Margin="0,15,0,0"/>
+    </StackPanel>
+    <StackPanel x:Name="InstallPanel" Visibility="Collapsed">
+     <Border Style="{StaticResource Card}"><StackPanel><Grid><TextBlock x:Name="InstallPhase" Text="Проверяем компоненты…" FontSize="15"/><TextBlock x:Name="InstallPercent" Text="0%" Foreground="#A3E6D6" HorizontalAlignment="Right"/></Grid><ProgressBar x:Name="InstallBar" Height="5" BorderThickness="0" Background="#293D47" Foreground="#9BE2D1" Margin="0,20,0,22"/><StackPanel x:Name="InstallRows"/></StackPanel></Border><TextBlock x:Name="InstallMessage" Text="Всё происходит в этом окне. Скачанные пакеты проверяются по SHA-256." TextWrapping="Wrap" Foreground="#829FAD" FontSize="11" LineHeight="19" Margin="0,17,0,0"/><Button x:Name="ContinueOffline" Visibility="Collapsed" Content="Продолжить без недостающих компонентов" HorizontalAlignment="Left" Margin="0,16,0,0" Click="SkipMissing" Background="Transparent" Foreground="#A6C6CE"/>
+    </StackPanel>
+    <Border x:Name="TourPanel" Style="{StaticResource Card}" Visibility="Collapsed" Padding="0" ClipToBounds="True">
+     <Grid><Grid.Background><LinearGradientBrush StartPoint="0,0" EndPoint="1,1"><GradientStop Color="#25494C" Offset="0"/><GradientStop Color="#192B3B" Offset=".5"/><GradientStop Color="#37314C" Offset="1"/></LinearGradientBrush></Grid.Background>
+      <Grid.ColumnDefinitions><ColumnDefinition Width="220"/><ColumnDefinition/></Grid.ColumnDefinitions>
+      <StackPanel Margin="22,30,5,0" VerticalAlignment="Top"><TextBlock x:Name="TourKicker" Text="ПОПРОБУЙТЕ" FontSize="9" Foreground="#8FC8BD"/><Border CornerRadius="10" Background="#2D444F" Padding="15" Margin="0,20,0,0"><StackPanel><TextBlock x:Name="TourFile" Text="weekend_trip.mp4" FontWeight="SemiBold" FontSize="12"/><TextBlock x:Name="TourFileType" Text="Видеофайл" Foreground="#8CAAB7" FontSize="10" Margin="0,6,0,0"/></StackPanel></Border><Border Background="#3D5A5E" CornerRadius="7" Padding="12,8" HorizontalAlignment="Left" Margin="0,19,0,0"><TextBlock x:Name="TourKeys" Text="Ctrl  +  наведение" Foreground="#D6F8EE" FontSize="11"/></Border><TextBlock x:Name="TourHint" Text="Наведите курсор на сектор и выберите формат." TextWrapping="Wrap" Foreground="#9DBBC5" FontSize="12" LineHeight="21" Margin="0,20,0,0"/><TextBlock x:Name="TourFeedback" Foreground="#A5E8D2" FontSize="11" TextWrapping="Wrap" LineHeight="18" Margin="0,18,0,0"/></StackPanel>
+      <Viewbox Grid.Column="1" x:Name="TourMenu" Margin="-8,10,0,10"/>
+      <TextBlock Grid.ColumnSpan="2" Text="Учебный пример · Ваши файлы не меняются" Foreground="#6E95A5" FontSize="9" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,14"/>
+     </Grid>
+    </Border>
+    <StackPanel x:Name="StylePanel" Visibility="Collapsed"><Border Style="{StaticResource Card}"><StackPanel><TextBlock Text="Ваш цвет подсветки" FontSize="18" FontWeight="SemiBold"/><TextBlock Text="Выберите настроение. Всё остальное можно изменить позже." Foreground="#819EAD" FontSize="11" Margin="0,10,0,21"/><StackPanel x:Name="Colors" Orientation="Horizontal"/><Viewbox x:Name="StyleMenu" Height="230" Margin="0,10,0,0"/></StackPanel></Border><TextBlock x:Name="FinishError" TextWrapping="Wrap" Foreground="#E4B39D" Margin="0,12,0,0"/></StackPanel>
+   </Grid>
+   <Grid Grid.Row="3" VerticalAlignment="Bottom"><Button x:Name="BackButton" Content="Назад" Background="Transparent" Foreground="#8EADBA" HorizontalAlignment="Left" Click="Back"/><TextBlock x:Name="BottomHint" Text="Около двух минут + время скачивания" Foreground="#6F8A9C" FontSize="10" VerticalAlignment="Center" Margin="85,0,0,0"/><Button x:Name="NextButton" Content="Начнём  →" Background="#9CE3D4" Foreground="#183A34" FontWeight="SemiBold" HorizontalAlignment="Right" Click="Next"/></Grid>
+  </Grid>
+ </Grid>
+ </Border>
+</Window>
+
+

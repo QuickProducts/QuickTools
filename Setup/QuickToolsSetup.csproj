@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+ <PropertyGroup>
+  <OutputType>WinExe</OutputType><TargetFramework>net8.0-windows</TargetFramework><UseWPF>true</UseWPF><Nullable>enable</Nullable><ImplicitUsings>disable</ImplicitUsings>
+  <AssemblyName>QuickToolsSetup</AssemblyName><Version>0.4.2</Version><ApplicationManifest>../app.manifest</ApplicationManifest>
+  <ApplicationIcon>../assets/QuickTools.ico</ApplicationIcon>
+  <PublishSingleFile>true</PublishSingleFile><SelfContained>true</SelfContained><RuntimeIdentifier>win-x64</RuntimeIdentifier><IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract><EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
+ </PropertyGroup>
+ <ItemGroup>
+  <Compile Include="../UserSettings.cs" Link="Shared/UserSettings.cs"/><Compile Include="../ToolLocator.cs" Link="Shared/ToolLocator.cs"/><Compile Include="../DependencyManager.cs" Link="Shared/DependencyManager.cs"/>
+  <Compile Include="../Actions.cs" Link="Shared/Actions.cs"/><Compile Include="../VectorIcon.cs" Link="Shared/VectorIcon.cs"/><Compile Include="../GlassSurface.cs" Link="Shared/GlassSurface.cs"/><Compile Include="../MenuPages.cs" Link="Shared/MenuPages.cs"/>
+  <Compile Include="../BrandAssets.cs" Link="Shared/BrandAssets.cs"/>
+  <Compile Include="../WindowLayout.cs" Link="Shared/WindowLayout.cs"/><Compile Include="../Native.cs" Link="Shared/Native.cs"/>
+  <Resource Include="../assets/quicktools-logo-glass.png" Link="assets/quicktools-logo-glass.png"/><Resource Include="../assets/quicktools-banner-glass.png" Link="assets/quicktools-banner-glass.png"/>
+  <EmbeddedResource Include="payload.zip" LogicalName="QuickTools.Payload"/><EmbeddedResource Include="payload.sha256" LogicalName="QuickTools.PayloadHash"/>
+ </ItemGroup>
+</Project>
+

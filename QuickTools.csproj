@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <Version>0.4.2</Version>
+    <ApplicationIcon>assets\QuickTools.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup><Content Include="tools\**\*" CopyToOutputDirectory="PreserveNewest" /></ItemGroup>
+  <ItemGroup><Resource Include="assets\quicktools-logo-glass.png"/><Resource Include="assets\quicktools-banner-glass.png"/><Resource Include="assets\QuickTools.ico"/></ItemGroup>
+  <ItemGroup><Compile Remove="Setup\**\*.cs"/><Page Remove="Setup\**\*.xaml"/><None Remove="Setup\**"/><EmbeddedResource Remove="Setup\**"/></ItemGroup>
+</Project>

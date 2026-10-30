@@ -1,0 +1,94 @@
+<Window x:Class="QuickTools.SettingsWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:shell="clr-namespace:System.Windows.Shell;assembly=PresentationFramework"
+ Title="QuickTools — Настройки" Width="1120" Height="790" MinWidth="1000" MinHeight="720" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="CanResizeWithGrip" Background="#10151D" Foreground="#EDF3F8" FontFamily="Segoe UI Variable Text" FontSize="13">
+ <shell:WindowChrome.WindowChrome><shell:WindowChrome CaptionHeight="0" ResizeBorderThickness="6" CornerRadius="16" GlassFrameThickness="0"/></shell:WindowChrome.WindowChrome>
+ <Window.Resources>
+  <SolidColorBrush x:Key="Muted" Color="#8B99AC"/>
+  <Style TargetType="Button">
+   <Setter Property="Foreground" Value="#E1EAF2"/><Setter Property="Background" Value="#202C38"/><Setter Property="Padding" Value="14,10"/><Setter Property="Cursor" Value="Hand"/><Setter Property="BorderThickness" Value="0"/>
+   <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="Button"><Border x:Name="B" Background="{TemplateBinding Background}" CornerRadius="9" Padding="{TemplateBinding Padding}"><ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/></Border><ControlTemplate.Triggers><Trigger Property="IsMouseOver" Value="True"><Setter TargetName="B" Property="Background" Value="#344650"/></Trigger><Trigger Property="IsPressed" Value="True"><Setter TargetName="B" Property="Opacity" Value=".65"/></Trigger><Trigger Property="IsKeyboardFocused" Value="True"><Setter TargetName="B" Property="BorderBrush" Value="#8DDDD0"/><Setter TargetName="B" Property="BorderThickness" Value="1"/></Trigger></ControlTemplate.Triggers></ControlTemplate></Setter.Value></Setter>
+  </Style>
+  <Style x:Key="Nav" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}"><Setter Property="HorizontalContentAlignment" Value="Left"/><Setter Property="Background" Value="Transparent"/><Setter Property="Margin" Value="0,3"/><Setter Property="Padding" Value="16,13"/><Setter Property="Template"><Setter.Value><ControlTemplate TargetType="Button"><Border x:Name="B" Background="{TemplateBinding Background}" CornerRadius="9" Padding="{TemplateBinding Padding}"><ContentPresenter HorizontalAlignment="Left"/></Border><ControlTemplate.Triggers><Trigger Property="IsMouseOver" Value="True"><Setter TargetName="B" Property="Background" Value="#25343D"/></Trigger><Trigger Property="IsKeyboardFocused" Value="True"><Setter TargetName="B" Property="BorderBrush" Value="#8DDDD0"/><Setter TargetName="B" Property="BorderThickness" Value="1"/></Trigger></ControlTemplate.Triggers></ControlTemplate></Setter.Value></Setter></Style>
+  <Style TargetType="CheckBox">
+   <Setter Property="Cursor" Value="Hand"/><Setter Property="VerticalAlignment" Value="Center"/><Setter Property="Template"><Setter.Value><ControlTemplate TargetType="CheckBox"><Grid Width="42" Height="25" Background="Transparent"><Border x:Name="Track" CornerRadius="12" Background="#354151"/><Ellipse x:Name="Dot" Width="17" Height="17" Fill="#A8B6C6" HorizontalAlignment="Left" Margin="4,0"/></Grid><ControlTemplate.Triggers><Trigger Property="IsChecked" Value="True"><Setter TargetName="Track" Property="Background" Value="#8DDDD0"/><Setter TargetName="Dot" Property="HorizontalAlignment" Value="Right"/><Setter TargetName="Dot" Property="Fill" Value="#152D2C"/></Trigger><Trigger Property="IsKeyboardFocused" Value="True"><Setter TargetName="Track" Property="BorderBrush" Value="White"/><Setter TargetName="Track" Property="BorderThickness" Value="1"/></Trigger></ControlTemplate.Triggers></ControlTemplate></Setter.Value></Setter>
+  </Style>
+  <Style TargetType="Slider">
+   <Setter Property="Height" Value="26"/><Setter Property="Margin" Value="0,12,0,0"/>
+   <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="Slider"><Grid><Border Height="4" CornerRadius="2" Background="#34404D"/><Track x:Name="PART_Track"><Track.DecreaseRepeatButton><RepeatButton Command="Slider.DecreaseLarge" Focusable="False"><RepeatButton.Template><ControlTemplate TargetType="RepeatButton"><Border Height="4" CornerRadius="2" Background="#8DDDD0"/></ControlTemplate></RepeatButton.Template></RepeatButton></Track.DecreaseRepeatButton><Track.Thumb><Thumb Width="17" Height="17"><Thumb.Template><ControlTemplate TargetType="Thumb"><Ellipse Fill="#E4FFF8" Stroke="#8DDDD0" StrokeThickness="3"/></ControlTemplate></Thumb.Template></Thumb></Track.Thumb><Track.IncreaseRepeatButton><RepeatButton Command="Slider.IncreaseLarge" Focusable="False"><RepeatButton.Template><ControlTemplate TargetType="RepeatButton"><Border Background="Transparent"/></ControlTemplate></RepeatButton.Template></RepeatButton></Track.IncreaseRepeatButton></Track></Grid></ControlTemplate></Setter.Value></Setter>
+  </Style>
+  <Style TargetType="TextBox"><Setter Property="Background" Value="#101820"/><Setter Property="Foreground" Value="#DAE4EE"/><Setter Property="CaretBrush" Value="#8DDDD0"/><Setter Property="BorderBrush" Value="#34424F"/><Setter Property="Padding" Value="10,9"/><Setter Property="BorderThickness" Value="1"/></Style>
+  <Style TargetType="ScrollBar"><Setter Property="Width" Value="6"/><Setter Property="Background" Value="Transparent"/><Setter Property="Template"><Setter.Value><ControlTemplate TargetType="ScrollBar"><Track x:Name="PART_Track" IsDirectionReversed="True" Orientation="Vertical"><Track.DecreaseRepeatButton><RepeatButton Command="ScrollBar.PageUpCommand" Opacity="0" Focusable="False"/></Track.DecreaseRepeatButton><Track.Thumb><Thumb MinHeight="24"><Thumb.Template><ControlTemplate TargetType="Thumb"><Border Background="#415361" CornerRadius="3" Margin="1"/></ControlTemplate></Thumb.Template></Thumb></Track.Thumb><Track.IncreaseRepeatButton><RepeatButton Command="ScrollBar.PageDownCommand" Opacity="0" Focusable="False"/></Track.IncreaseRepeatButton></Track></ControlTemplate></Setter.Value></Setter></Style>
+  <Style x:Key="Card" TargetType="Border"><Setter Property="Background" Value="#18212B"/><Setter Property="BorderBrush" Value="#2A3543"/><Setter Property="BorderThickness" Value="1"/><Setter Property="CornerRadius" Value="14"/><Setter Property="Padding" Value="21"/><Setter Property="Margin" Value="0,0,0,14"/></Style>
+  <Style x:Key="SectionLabel" TargetType="TextBlock"><Setter Property="FontSize" Value="10"/><Setter Property="FontWeight" Value="SemiBold"/><Setter Property="Foreground" Value="#8294A7"/><Setter Property="Margin" Value="0,0,0,14"/></Style>
+ </Window.Resources>
+ <Border Background="#10151D" BorderBrush="#36424D" BorderThickness="1" CornerRadius="15">
+ <Grid>
+  <Grid.RowDefinitions><RowDefinition Height="57"/><RowDefinition/><RowDefinition Height="45"/></Grid.RowDefinitions>
+  <Grid Grid.Row="0" Background="#141C25" MouseLeftButtonDown="DragTitle">
+   <StackPanel Orientation="Horizontal" Margin="22,0" VerticalAlignment="Center"><Image x:Name="BrandLogo" Width="35" Height="35" RenderOptions.BitmapScalingMode="HighQuality"/><TextBlock Text="QuickTools" FontWeight="SemiBold" Margin="11,0" VerticalAlignment="Center"/><TextBlock Text="/  Настройки" Foreground="{StaticResource Muted}" VerticalAlignment="Center"/></StackPanel>
+   <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,12,0"><Button Content="−" FontSize="18" Width="40" Padding="0" Background="Transparent" Click="Minimize"/><Button Content="×" FontSize="23" Width="40" Padding="0" Background="Transparent" Click="CloseWindow"/></StackPanel>
+  </Grid>
+  <Grid Grid.Row="1">
+   <Grid.ColumnDefinitions><ColumnDefinition Width="192"/><ColumnDefinition/></Grid.ColumnDefinitions>
+   <Border BorderBrush="#25313C" BorderThickness="0,0,1,0" Background="#121A23">
+    <DockPanel Margin="14,27,14,22">
+     <StackPanel DockPanel.Dock="Bottom"><Border Background="#1C2C30" CornerRadius="10" Padding="13"><StackPanel><TextBlock Text="●  Работает в фоне" Foreground="#8DDDD0" FontSize="11"/><TextBlock Text="Ctrl + наведение" Foreground="#94A7B6" FontSize="11" Margin="0,7,0,0"/></StackPanel></Border><TextBlock Text="QUICKTOOLS  /  0.4.2" FontSize="9" Foreground="#61788A" Margin="10,16,0,0"/></StackPanel>
+     <StackPanel><TextBlock Text="НАСТРОЙКИ" Style="{StaticResource SectionLabel}" Margin="16,0,0,14"/><Button x:Name="AppearanceNav" Style="{StaticResource Nav}" Content="Внешний вид" Tag="appearance" Click="Navigate"/><Button x:Name="BehaviorNav" Style="{StaticResource Nav}" Content="Управление" Tag="behavior" Click="Navigate"/><Button x:Name="ActionsNav" Style="{StaticResource Nav}" Content="Действия" Tag="actions" Click="Navigate"/><Button x:Name="ToolsNav" Style="{StaticResource Nav}" Content="Конвертеры" Tag="tools" Click="Navigate"/></StackPanel>
+    </DockPanel>
+   </Border>
+   <Grid Grid.Column="1" Margin="30,26,30,20">
+    <Grid.RowDefinitions><RowDefinition Height="84"/><RowDefinition/></Grid.RowDefinitions>
+    <StackPanel><TextBlock x:Name="PageTitle" Text="Внешний вид" FontSize="28" FontWeight="SemiBold"/><TextBlock x:Name="PageDescription" Text="Лёгкое стекло. Ваш цвет. Ничего лишнего." Foreground="{StaticResource Muted}" Margin="0,8,0,0"/></StackPanel>
+    <Grid Grid.Row="1">
+     <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="22"/><ColumnDefinition Width="380"/></Grid.ColumnDefinitions>
+     <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Padding="0,0,8,0">
+      <StackPanel>
+       <StackPanel x:Name="AppearancePage">
+        <Border Style="{StaticResource Card}"><StackPanel><TextBlock Text="МАТЕРИАЛ" Style="{StaticResource SectionLabel}"/><Grid><StackPanel><TextBlock Text="Liquid Glass" FontSize="17" FontWeight="SemiBold"/><TextBlock Text="Размытие, свет и глубина" Foreground="{StaticResource Muted}" FontSize="11" Margin="0,5,0,0"/></StackPanel><Border HorizontalAlignment="Right" VerticalAlignment="Top" CornerRadius="6" Background="#283F40" Padding="7,4"><TextBlock Text="АКТИВЕН" FontSize="8" Foreground="#9CE5D8"/></Border></Grid><Rectangle xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Height="1" Fill="#2C3845" Margin="0,19,0,17"/>
+         <Grid><TextBlock Text="Плотность стекла"/><TextBlock x:Name="OpacityValue" HorizontalAlignment="Right" Foreground="#9EDBD1"/></Grid><Slider x:Name="OpacitySlider" Minimum="30" Maximum="95" ValueChanged="AppearanceChanged"/>
+         <Grid Margin="0,14,0,0"><TextBlock Text="Мягкость бликов"/><TextBlock x:Name="BlurValue" HorizontalAlignment="Right" Foreground="#9EDBD1"/></Grid><Slider x:Name="BlurSlider" Minimum="0" Maximum="32" ValueChanged="AppearanceChanged"/>
+        </StackPanel></Border>
+        <Border Style="{StaticResource Card}"><StackPanel><TextBlock Text="ПЕРСОНАЛИЗАЦИЯ" Style="{StaticResource SectionLabel}"/><TextBlock Text="Цвет подсветки"/><StackPanel x:Name="Swatches" Orientation="Horizontal" Margin="0,13,0,19"/>
+         <Grid><TextBlock Text="Размер меню"/><TextBlock x:Name="ScaleValue" HorizontalAlignment="Right" Foreground="#9EDBD1"/></Grid><Slider x:Name="ScaleSlider" Minimum="75" Maximum="130" ValueChanged="AppearanceChanged"/>
+         <Grid Margin="0,17,0,0"><StackPanel><TextBlock Text="Плавные анимации"/><TextBlock Text="Появление и отклик секторов" Foreground="{StaticResource Muted}" FontSize="10" Margin="0,5,0,0"/></StackPanel><CheckBox x:Name="AnimationsToggle" HorizontalAlignment="Right" Click="BehaviorChanged" AutomationProperties.Name="Плавные анимации"/></Grid>
+        </StackPanel></Border>
+        <Button Content="Сбросить внешний вид" HorizontalAlignment="Left" Background="Transparent" Foreground="{StaticResource Muted}" Click="ResetAppearance"/>
+       </StackPanel>
+       <StackPanel x:Name="BehaviorPage" Visibility="Collapsed">
+        <Border Style="{StaticResource Card}"><StackPanel><TextBlock Text="ВЫЗОВ МЕНЮ" Style="{StaticResource SectionLabel}"/><Grid><StackPanel><TextBlock Text="Ctrl + наведение"/><TextBlock Text="Открывать меню над файлом" FontSize="11" Foreground="{StaticResource Muted}" Margin="0,6,0,0"/></StackPanel><CheckBox x:Name="HoverToggle" HorizontalAlignment="Right" Click="BehaviorChanged" AutomationProperties.Name="Ctrl и наведение"/></Grid><Grid Margin="0,24,0,0"><TextBlock Text="Задержка открытия"/><TextBlock x:Name="DelayValue" HorizontalAlignment="Right" Foreground="#9EDBD1"/></Grid><Slider x:Name="DelaySlider" Minimum="150" Maximum="1200" ValueChanged="BehaviorChanged"/><TextBlock Text="Ctrl + Space всегда открывает действия для выделенных файлов." TextWrapping="Wrap" Foreground="{StaticResource Muted}" FontSize="11" Margin="0,18,0,0" LineHeight="18"/></StackPanel></Border>
+        <Border Style="{StaticResource Card}"><Grid><StackPanel><TextBlock Text="Уведомления"/><TextBlock Text="Результаты и ошибки конвертации" Foreground="{StaticResource Muted}" FontSize="10" Margin="0,6,0,0"/></StackPanel><CheckBox x:Name="NotificationsToggle" HorizontalAlignment="Right" Click="BehaviorChanged" AutomationProperties.Name="Уведомления"/></Grid></Border>
+        <Border Style="{StaticResource Card}"><StackPanel><TextBlock Text="ВСЕГДА ПОД РУКОЙ" Style="{StaticResource SectionLabel}"/><TextBlock Text="Ctrl  —  удерживать меню открытым&#x0a;Клик  —  выбрать действие&#x0a;Esc  —  закрыть меню" LineHeight="27" Foreground="#BFCDD9"/></StackPanel></Border>
+       </StackPanel>
+       <StackPanel x:Name="ActionsPage" Visibility="Collapsed"><Border Style="{StaticResource Card}"><StackPanel><TextBlock Text="СЕКТОРЫ МЕНЮ" Style="{StaticResource SectionLabel}"/><TextBlock Text="Форматы зависят от файла. Дополнительные действия доступны через «Ещё». TXT → BAT и другие расширения создают копию текста; код не изменяется и не запускается." TextWrapping="Wrap" Foreground="{StaticResource Muted}" FontSize="11" LineHeight="18" Margin="0,0,0,16"/><TextBox x:Name="ActionSearch" ToolTip="Поиск формата: BAT, PDF, PNG…" TextChanged="SearchActions" Margin="0,0,0,18"/><StackPanel x:Name="ActionRows"/></StackPanel></Border></StackPanel>
+       <StackPanel x:Name="ToolsPage" Visibility="Collapsed">
+        <Border Style="{StaticResource Card}"><StackPanel><TextBlock Text="АВТОМАТИЧЕСКАЯ УСТАНОВКА" Style="{StaticResource SectionLabel}"/><Grid><StackPanel Width="260" HorizontalAlignment="Left"><TextBlock Text="Скачивать по необходимости"/><TextBlock Text="При первом выборе нужного формата" Foreground="{StaticResource Muted}" FontSize="10" Margin="0,5,0,0"/></StackPanel><CheckBox x:Name="AutoInstallToggle" HorizontalAlignment="Right" Click="BehaviorChanged" AutomationProperties.Name="Автоматически устанавливать конвертеры"/></Grid><Button x:Name="InstallAllButton" Content="Установить всё необходимое" Click="InstallAllTools" Margin="0,18,0,0" Background="#284440"/><ProgressBar x:Name="InstallProgress" IsIndeterminate="True" Visibility="Collapsed" Height="3" Foreground="#8DDDD0" Background="#28343E" Margin="0,13,0,0"/><TextBlock x:Name="InstallStatus" Text="FFmpeg · ImageMagick · Pandoc · Typst · Poppler" Foreground="{StaticResource Muted}" FontSize="10" TextWrapping="Wrap" Margin="0,11,0,0" LineHeight="16"/><TextBlock Text="Прямое скачивание с сайтов проектов и проверка SHA-256. Устанавливаем переносимые компоненты без прав администратора." TextWrapping="Wrap" FontSize="10" Foreground="{StaticResource Muted}" Margin="0,12,0,0" LineHeight="16"/></StackPanel></Border>
+        <Border Style="{StaticResource Card}"><StackPanel><TextBlock Text="ЛОКАЛЬНЫЕ ДВИЖКИ" Style="{StaticResource SectionLabel}"/><TextBlock Text="Пути определяются автоматически после установки. При необходимости можно указать свой EXE." Foreground="{StaticResource Muted}" FontSize="11" TextWrapping="Wrap" LineHeight="18" Margin="0,0,0,18"/><StackPanel x:Name="ToolRows"/></StackPanel></Border>
+       </StackPanel>
+      </StackPanel>
+     </ScrollViewer>
+     <StackPanel Grid.Column="2">
+      <Border CornerRadius="17" BorderBrush="#37444E" BorderThickness="1" ClipToBounds="True">
+       <Grid Height="440">
+        <Grid.Background><LinearGradientBrush StartPoint="0,0" EndPoint="1,1"><GradientStop Color="#223B41" Offset="0"/><GradientStop Color="#192732" Offset=".46"/><GradientStop Color="#36314C" Offset="1"/></LinearGradientBrush></Grid.Background>
+        <Canvas IsHitTestVisible="False" ClipToBounds="True"><Ellipse Width="310" Height="250" Fill="#34675C" Opacity=".55" Canvas.Left="-130" Canvas.Top="-70"><Ellipse.Effect><BlurEffect Radius="65"/></Ellipse.Effect></Ellipse><Ellipse Width="280" Height="330" Fill="#63547B" Opacity=".45" Canvas.Left="190" Canvas.Top="180"><Ellipse.Effect><BlurEffect Radius="65"/></Ellipse.Effect></Ellipse><Path Data="M-30,340 C40,60 190,420 420,80" Stroke="#779E9C" StrokeThickness="38" Opacity=".14"><Path.Effect><BlurEffect Radius="30"/></Path.Effect></Path></Canvas>
+        <TextBlock Text="●  ПРЕДПРОСМОТР" Foreground="#AEDBD1" FontSize="9" Margin="19,18" VerticalAlignment="Top"/>
+        <Border HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,14,15,0" Background="#273A43" CornerRadius="5" Padding="7,4"><TextBlock Text="ИНТЕРАКТИВНО" FontSize="8" Foreground="#B3C6D2"/></Border>
+        <Viewbox x:Name="PreviewHost" Margin="0,42,0,28" Stretch="Uniform"/>
+        <TextBlock x:Name="SampleFile" Text="weekend_trip.mp4" FontSize="11" Foreground="#B7C8D2" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,16"/>
+       </Grid>
+      </Border>
+      <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,16,0,0"><Button x:Name="VideoSample" Content="Видео" Tag="video" Click="ChangeSample" Padding="12,8" FontSize="11" Margin="0,0,5,0"/><Button Content="Фото" Tag="image" Click="ChangeSample" Padding="12,8" FontSize="11" Margin="0,0,5,0"/><Button Content="Аудио" Tag="audio" Click="ChangeSample" Padding="12,8" FontSize="11" Margin="0,0,5,0"/><Button Content="Текст" Tag="text" Click="ChangeSample" Padding="12,8" FontSize="11"/></StackPanel>
+      <TextBlock Text="Наведите курсор на сектор,&#x0a;чтобы увидеть подсветку." Foreground="#7F94A6" FontSize="11" TextAlignment="Center" Margin="0,15,0,0" LineHeight="18"/>
+     </StackPanel>
+    </Grid>
+   </Grid>
+  </Grid>
+  <Border Grid.Row="2" BorderBrush="#28333F" BorderThickness="0,1,0,0"><Grid Margin="23,0"><TextBlock x:Name="SaveStatus" Text="●  Все изменения сохранены" Foreground="#8EB9AD" FontSize="10" VerticalAlignment="Center"/><TextBlock Text="Локальная обработка · Оригиналы сохраняются" Foreground="#6F8295" FontSize="10" HorizontalAlignment="Right" VerticalAlignment="Center"/></Grid></Border>
+ </Grid>
+ </Border>
+</Window>
+
+
+
+
+
+
